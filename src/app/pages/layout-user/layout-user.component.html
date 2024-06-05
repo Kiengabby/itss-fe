@@ -1,0 +1,110 @@
+<nz-layout style="background-color: #7d7575 !important" class="layout">
+  <nz-sider
+    class="menu-sidebar"
+    nzTheme="dark"
+    nzCollapsible
+    nzWidth="180px"
+    nzBreakpoint="md"
+    [(nzCollapsed)]="isCollapsed"
+    [nzTrigger]="null"
+  >
+    <div class="sidebar-logo" [routerLink]="'/'">
+      <div
+        style="
+          width: 2.3rem;
+          height: 2.3rem;
+          border-radius: 8px;
+          background-color: #fff;
+          transform: rotate(45deg);
+        "
+      ></div>
+      <span style="margin: 1em; font-size: 16px; color: #fff"
+        ><strong>CONLONSUA</strong></span
+      >
+    </div>
+    <ul
+      nz-menu
+      nzTheme="dark"
+      nzMode="inline"
+      [nzInlineCollapsed]="isCollapsed"
+    >
+      <ng-container *ngFor="let item of menus">
+        <li
+          *ngIf="item.subMenus && item.role == role"
+          nz-submenu
+          [nzTitle]="item.title"
+          [nzIcon]="item.icon"
+        >
+          <ul>
+            <li *ngFor="let sub of item.subMenus" nz-menu-item>
+              <a [routerLink]="sub.url">{{ sub.title }}</a>
+            </li>
+          </ul>
+        </li>
+        <li
+          [routerLink]="item.url"
+          nz-menu-item
+          *ngIf="!item.subMenus && item.role == role"
+        >
+          <span nz-icon><i [ngClass]="item.icon"></i></span>
+          <span>{{ item.title }}</span>
+        </li>
+      </ng-container>
+    </ul>
+    <span
+      class="header-trigger"
+      style="
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+        color: #fff;
+        justify-content: left;
+        border-top: 1px solid rgba(0, 0, 0, 0.06);
+        align-items: center;
+        align-content: center;
+        flex-wrap: nowrap;
+      "
+      (click)="isCollapsed = !isCollapsed"
+    >
+      <span class="trigger" nz-icon>
+        <i
+          [ngClass]="isCollapsed ? 'fas fa-arrow-right' : 'fas fa-arrow-left'"
+        ></i>
+      </span>
+    </span>
+  </nz-sider>
+
+  <nz-layout class="right-layout">
+    <nz-header>
+    </nz-header>
+    <!-- <nz-breadcrumb>
+      <nz-breadcrumb-item>
+        <a [routerLink]="['/']">Home</a>
+      </nz-breadcrumb-item>
+      <nz-breadcrumb-item *ngIf="url==='/'">
+        <a>New Management</a>
+      </nz-breadcrumb-item>
+      <nz-breadcrumb-item *ngFor="let item of breadcrumbs">
+        <a [routerLink]="getMenuUrl(getMenuTitle(item))">{{ getMenuTitle(item) }}</a>
+      </nz-breadcrumb-item>
+    </nz-breadcrumb> -->
+    <nz-content>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+
+    <nz-footer
+      style="
+        text-align: center;
+        padding: 5rem 0 0 0;
+        margin-top: -8px;
+        line-height: 20px;
+      "
+    >
+      <nz-divider></nz-divider>
+      <app-footer></app-footer>
+    </nz-footer>
+  </nz-layout>
+</nz-layout>
