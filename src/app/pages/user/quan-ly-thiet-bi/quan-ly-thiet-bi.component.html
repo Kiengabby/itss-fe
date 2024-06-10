@@ -20,7 +20,6 @@
     <div>
       <span>Ngày nhập về</span>
       <br>
-<!--      <input nz-input placeholder="Basic usage"  type="date" [(ngModel)]="ngayNhapVe" />-->
       <nz-date-picker [(ngModel)]="ngayNhapVe" ></nz-date-picker>
 
     </div>
@@ -55,6 +54,7 @@
   <nz-table [nzData]="listOfData">
     <thead>
     <tr>
+      <th>STT</th>
       <th>Tên thiết bị</th>
       <th>Mã thiết bị</th>
       <th>Số lượng</th>
@@ -66,7 +66,8 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let data of listOfData">
+    <tr *ngFor="let data of listOfData; let i=index">
+      <td>{{ i +1 }}</td>
       <td>{{ data.tenThietBi }}</td>
       <td>{{ data.maThietBi}}</td>
       <td>{{ data.soLuong }}</td>
@@ -78,7 +79,9 @@
       <td>
 <!--        <a>Action 一 {{ data.name }}</a>-->
         <nz-divider nzType="vertical"></nz-divider>
-        <a><span nz-icon nzType="delete" nzTheme="outline"></span></a>
+        <div (click)="showDeleteConfirm(data)" style="cursor: pointer">
+          <span nz-icon nzType="delete" nzTheme="outline"></span>
+        </div>
       </td>
     </tr>
     </tbody>
