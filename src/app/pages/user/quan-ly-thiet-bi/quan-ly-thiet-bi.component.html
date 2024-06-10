@@ -1,1 +1,90 @@
-<p>quan-ly-thiet-bi works!</p>
+<nz-card style="width:100%;" nzTitle="Quản lý thiết bị" [nzExtra]="extraTemplate">
+  <!--Dòng 1-->
+  <div class="input-container">
+    <div>
+      <span>Tên thiết bị</span>
+      <input nz-input placeholder=""  type="text" [(ngModel)]="tenThietBi" />
+    </div>
+    <div>
+      <span>Mã thiết bị</span>
+      <input nz-input placeholder=""  type="text" [(ngModel)]="maThietBi" />
+    </div>
+    <div>
+      <span>Số lượng</span>
+      <input nz-input placeholder="00"  type="number" [(ngModel)]="soLuong" />
+    </div>
+  </div>
+  <br>
+  <!--Dòng 2-->
+  <div class="input-container">
+    <div>
+      <span>Ngày nhập về</span>
+      <br>
+      <nz-date-picker [(ngModel)]="ngayNhapVe" ></nz-date-picker>
+
+    </div>
+    <div>
+      <span>Ngày bảo hành</span>
+      <br>
+      <nz-date-picker [(ngModel)]="ngayBaoHanh" ></nz-date-picker>
+    </div>
+    <div>
+      <span>Xuất xứ</span>
+<!--      <input nz-input placeholder="Việt Nam"  type="text" [(ngModel)]="xuatXu" />-->
+      <input nz-input placeholder="Basic usage" [(ngModel)]="xuatXu" type="text" />
+    </div>
+    <div>
+      <span>Tình trạng</span>
+      <input nz-input placeholder=""  type="text" [(ngModel)]="tinhTrang" />
+    </div>
+  </div>
+</nz-card>
+<ng-template #extraTemplate>
+  <button (click)="themMoi()" nz-button nzType="primary">
+    <span nz-icon nzType="plus"></span>
+    Thêm mới
+  </button>
+</ng-template>
+<br><br>
+
+
+
+
+<nz-card style="width:100%;" >
+  <nz-table [nzData]="listOfData">
+    <thead>
+    <tr>
+      <th>STT</th>
+      <th>Tên thiết bị</th>
+      <th>Mã thiết bị</th>
+      <th>Số lượng</th>
+      <th>Ngày nhập về</th>
+      <th>Ngày bảo hành</th>
+      <th>Xuất xứ</th>
+      <th>Tình trạng</th>
+      <th>Thao tác</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let data of listOfData; let i=index">
+      <td>{{ i +1 }}</td>
+      <td>{{ data.tenThietBi }}</td>
+      <td>{{ data.maThietBi}}</td>
+      <td>{{ data.soLuong }}</td>
+      <td>{{ data.ngayNhapVe.toLocaleDateString('vi-VI')  }}</td>
+      <td>{{ data.ngayBaoHanh.toLocaleDateString('vi-VI')  }}</td>
+      <td>{{ data.xuatXu }}</td>
+      <td>{{ data.tinhTrang }}</td>
+
+      <td>
+<!--        <a>Action 一 {{ data.name }}</a>-->
+        <nz-divider nzType="vertical"></nz-divider>
+        <div (click)="showDeleteConfirm(data)" style="cursor: pointer">
+          <span nz-icon nzType="delete" nzTheme="outline"></span>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </nz-table>
+</nz-card>
+

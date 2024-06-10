@@ -23,13 +23,13 @@ import { NzMessageModule } from 'ng-zorro-antd/message';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HammerModule } from '@angular/platform-browser';
-import { GlobalService } from './global.service';
+import { GlobalService } from './global.service'
 
 
 registerLocaleData(vi);
 
 @NgModule({
-  declarations: [AppComponent, LayoutComponent],
+  declarations: [AppComponent, LayoutComponent,],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -46,7 +46,9 @@ registerLocaleData(vi);
     NzTableModule,
     NzMessageModule,
     NzModalModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserModule,
+    BrowserAnimationsModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: vi_VN }
   ],

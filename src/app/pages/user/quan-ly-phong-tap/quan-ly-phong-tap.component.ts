@@ -8,23 +8,33 @@ import { Component } from '@angular/core';
 export class QuanLyPhongTapComponent {
   listOfData: any[] = [
     {
-      key: '1',
-      name: 'John Brown',
-      age: 32,
-      address: 'New York No. 1 Lake Park'
+      roomId: '1',
+      roomName: 'Gym',
+      quantity: '2',
+      description: 'Còn ',
+      
     },
     {
-      key: '2',
-      name: 'Jim Green',
-      age: 42,
-      address: 'London No. 1 Lake Park'
+      roomId: '2',
+      roomName: 'Boxing',
+      quantity: '3',
+      description: 'Đầy ',
+      
     },
     {
-      key: '3',
-      name: 'Joe Black',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park'
-    }
+      roomId: '3',
+      roomName: 'yoga',
+      quantity: '2',
+      description: 'Còn ',
+      
+    },
+    {
+      roomId: '4',
+      roomName: 'Dance',
+      quantity: '1',
+      description: 'Còn ',
+      
+    },
   ];
 
 }
